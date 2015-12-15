@@ -135,6 +135,10 @@ public class EntityBleedingEvent extends LivingEvent {
 		    {
 		        spawnBlood(par1Entity, "blockcrack_80_0", 100);
 		    }
+		    else if (entity instanceof EntityPlayer)
+		    {
+		        spawnRedBlood(par1Entity, 300); //Isn't working in clientside
+		    }
 		    else
 		    {
 		        if (par1Entity.getCreatureAttribute() == EnumCreatureAttribute.ARTHROPOD) 
@@ -150,6 +154,13 @@ public class EntityBleedingEvent extends LivingEvent {
 			    	spawnRedBlood(par1Entity, 250);
 		        }
 		    }
+		}
+		else 
+		{
+			if (entity instanceof EntityPlayer)
+			{
+				spawnRedBlood(par1Entity, 300); //Working with crash after second (Ticking Entity/Particle/Player)
+			}
 		}
 	}
 }
